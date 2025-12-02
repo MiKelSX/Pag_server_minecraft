@@ -6,7 +6,7 @@
 const obtenerURLAPI = () => {
     // Si estamos en GitHub Pages, usar la URL de Railway configurada
     if (window.location.hostname === 'mikelsx.github.io') {
-        return 'pagina-minecraft-uft.up.railway.app';
+        return 'https://pagina-minecraft-uft.up.railway.app';
     }
     // Si estamos en localhost (desarrollo local), usar localhost
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {

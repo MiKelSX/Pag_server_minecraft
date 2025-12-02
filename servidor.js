@@ -251,7 +251,6 @@ app.get('/api/estadisticas-navegador', (req, res) => {
 const PUERTO = process.env.PORT || process.env.PUERTO || 3000;
 
 // Permitir CORS para GitHub Pages
-const cors = require('cors');
 app.use(cors({
     origin: ['https://mikelsx.github.io', 'http://localhost:3000', 'http://localhost:5173'],
     methods: ['GET', 'POST', 'OPTIONS'],

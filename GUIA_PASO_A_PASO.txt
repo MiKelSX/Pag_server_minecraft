@@ -1,0 +1,341 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║              🎯 GUÍA PASO A PASO - SISTEMA DE VOTACIÓN UFT 🎯            ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+PASO 1: DESCARGAR E INSTALAR NODE.JS
+════════════════════════════════════════════════════════════════════════════
+
+1. Abre tu navegador
+2. Ve a: https://nodejs.org/
+3. Descarga la versión LTS (Recommended For Most Users)
+4. Ejecuta el instalador
+5. Sigue los pasos (puedes dejar opciones por defecto)
+6. Reinicia tu computadora
+
+Verificar instalación:
+  - Abre PowerShell o CMD
+  - Escribe: node --version
+  - Deberías ver un número como: v18.17.0
+
+
+PASO 2: PREPARAR LA CARPETA DEL PROYECTO
+════════════════════════════════════════════════════════════════════════════
+
+Ya tienes los archivos en:
+  C:\Users\migue\Downloads\Minecraft Bedrock Coosas\pag\Pag_server_minecraft
+
+Verifica que estén estos archivos:
+  ✓ package.json
+  ✓ servidor.js
+  ✓ script.js
+  ✓ index.html
+  ✓ admin.html
+  ✓ iniciar.bat
+  ✓ style.css
+
+
+PASO 3: INSTALAR DEPENDENCIAS (OPCIÓN MÁS FÁCIL)
+════════════════════════════════════════════════════════════════════════════
+
+OPCIÓN A - EJECUTAR ARCHIVO BATCH (RECOMENDADO PARA WINDOWS):
+  1. Abre la carpeta del proyecto
+  2. Haz DOBLE CLIC en: iniciar.bat
+  3. Se abrirá una ventana negra (terminal)
+  4. Espera a que diga "Servidor ejecutándose en puerto: 3000"
+
+OPCIÓN B - USAR TERMINAL:
+  1. Abre PowerShell o CMD
+  2. Navega a la carpeta:
+     cd "C:\Users\migue\Downloads\Minecraft Bedrock Coosas\pag\Pag_server_minecraft"
+  3. Instala dependencias:
+     npm install
+  4. Inicia el servidor:
+     npm start
+
+
+PASO 4: ACCEDER A LA PÁGINA
+════════════════════════════════════════════════════════════════════════════
+
+Una vez que el servidor está ejecutándose:
+
+1. Abre tu navegador favorito (Chrome, Firefox, Safari, Edge)
+2. Ve a: http://localhost:3000
+3. ¡Listo! Deberías ver la página del servidor UFT
+
+Para ver el panel de administración:
+  Ve a: http://localhost:3000/admin.html
+
+
+PASO 5: PROBAR LA VOTACIÓN
+════════════════════════════════════════════════════════════════════════════
+
+1. En la página principal (http://localhost:3000)
+2. Espera 10 segundos
+3. Aparecerá un modal con el anuncio del addon
+4. Haz clic en "Sí", "No" o "Quizás"
+5. ¡Tu voto se ha registrado!
+6. Puedes ver los resultados actualizados en tiempo real
+
+NOTA: No puedes votar de nuevo desde el mismo navegador/dispositivo
+
+
+PASO 6: VER LOS DATOS EN EL PANEL ADMIN
+════════════════════════════════════════════════════════════════════════════
+
+1. Abre: http://localhost:3000/admin.html
+2. Verás:
+   • Total de votos
+   • Detalles de cada voto
+   • País de cada votante
+   • Navegador usado
+   • Tabla con todos los datos
+
+3. Los datos se actualizan automáticamente cada 30 segundos
+
+
+PASO 7: VER LA BASE DE DATOS JSON
+════════════════════════════════════════════════════════════════════════════
+
+Los votos se guardan en: basedatos_votos.json
+
+Para abrirlo:
+  1. Ve a la carpeta del proyecto
+  2. Haz clic derecho en: basedatos_votos.json
+  3. Selecciona "Abrir con" → "Bloc de notas" o tu editor favorito
+
+Verás algo así:
+  {
+    "addonNombre": "Better on Bedrock v1.1.3",
+    "totalVotos": 5,
+    "votos": {
+      "si": 3,
+      "no": 1,
+      "quiza": 1
+    },
+    "detallesVotos": [
+      { ... detalles de cada voto ... }
+    ]
+  }
+
+
+INFORMACIÓN RECOPILADA DE CADA VOTO
+════════════════════════════════════════════════════════════════════════════
+
+Para cada voto se guarda:
+  • Tipo de voto: Sí, No, Quizás
+  • Fecha exacta: DD/MM/YYYY HH:MM:SS
+  • Navegador: Chrome, Firefox, Safari, Edge, etc.
+  • Sistema Operativo: Windows, Mac, Linux, Android, iOS
+  • País: Obtenido por geolocalización
+  • Ciudad: Obtenida por geolocalización
+  • Dirección IP: Para estadísticas
+  • User Agent: Información técnica del dispositivo
+
+
+SOLUCIÓN DE PROBLEMAS
+════════════════════════════════════════════════════════════════════════════
+
+❌ Error: "npm no es reconocido"
+✅ Solución: Node.js no está instalado o no está en PATH
+   - Reinstala Node.js desde https://nodejs.org/
+   - Reinicia tu computadora
+
+❌ Error: "npm ERR! code ENOENT"
+✅ Solución: No estás en la carpeta correcta
+   - Abre PowerShell
+   - Escribe: cd "C:\Users\migue\Downloads\Minecraft Bedrock Coosas\pag\Pag_server_minecraft"
+   - Luego: npm install
+
+❌ Error: "Port 3000 is already in use"
+✅ Solución: Otro programa está usando el puerto 3000
+   Opción 1 - Cierra otro programa que use ese puerto
+   Opción 2 - Usa otro puerto:
+   En PowerShell:
+     set PUERTO=8000
+     npm start
+   Luego accede a: http://localhost:8000
+
+❌ La geolocalización dice "No disponible"
+✅ Solución: Es normal, depende de una API externa
+   - Los votos se registran normalmente
+   - Es solo información adicional
+
+❌ No me aparece el anuncio después de 10 segundos
+✅ Solución: Verifica que:
+   - El servidor está corriendo (terminal negra)
+   - Esperas realmente 10 segundos (sin navegar)
+   - Usas un navegador moderno
+   - Limpias caché: Ctrl+Shift+Delete
+
+
+COMANDOS ÚTILES
+════════════════════════════════════════════════════════════════════════════
+
+Iniciar servidor (producción):
+  npm start
+
+Iniciar servidor (desarrollo - con reinicio automático):
+  npm run desarrollo
+
+Cambiar puerto (en PowerShell):
+  set PUERTO=8000
+  npm start
+
+Borrar todos los votos:
+  1. Abre basedatos_votos.json con un editor
+  2. Reemplaza el contenido con:
+     {
+       "addonNombre": "Better on Bedrock v1.1.3",
+       "totalVotos": 0,
+       "votos": {
+         "si": 0,
+         "no": 0,
+         "quiza": 0
+       },
+       "detallesVotos": []
+     }
+  3. Guarda el archivo
+
+Detener servidor:
+  Presiona: Ctrl+C en la terminal
+
+
+ARCHIVOS IMPORTANTES
+════════════════════════════════════════════════════════════════════════════
+
+PÁGINA PRINCIPAL:
+  http://localhost:3000
+  Archivo: index.html
+
+PANEL DE ADMINISTRACIÓN:
+  http://localhost:3000/admin.html
+  Archivo: admin.html
+
+BASE DE DATOS:
+  Ubicación: basedatos_votos.json
+  Contiene: Todos los votos con información completa
+
+CÓDIGO DEL SERVIDOR:
+  Archivo: servidor.js
+  Crea los endpoints de API
+
+CÓDIGO DEL CLIENTE:
+  Archivo: script.js
+  Gestiona la interfaz y votación
+
+ESTILOS:
+  Archivo: style.css
+  Diseño visual
+
+
+API ENDPOINTS (PARA DESARROLLADORES)
+════════════════════════════════════════════════════════════════════════════
+
+POST /api/registrar-voto
+  Registra un voto
+  Body: { "voto": "si" }
+  Response: Estadísticas actualizadas
+
+GET /api/estadisticas-votos
+  Obtiene estadísticas generales
+  Response: Total y porcentajes
+
+GET /api/detalles-votos
+  Obtiene todos los votos con detalles
+  Response: Array de votos con información completa
+
+GET /api/estadisticas-pais
+  Obtiene estadísticas por país
+  Response: Votos agrupados por país
+
+GET /api/estadisticas-navegador
+  Obtiene estadísticas por navegador
+  Response: Votos agrupados por navegador
+
+
+PERSONALIZACIÓN
+════════════════════════════════════════════════════════════════════════════
+
+Cambiar el tiempo del anuncio (10 segundos):
+  1. Abre script.js
+  2. Busca: let tiempoRestante = 10;
+  3. Cambia 10 por los segundos que quieras
+
+Cambiar el nombre del addon:
+  1. Abre index.html
+  2. Busca: "Better on Bedrock v1.1.3"
+  3. Reemplaza con el nuevo nombre
+  También en servidor.js:
+  4. Busca: "addonNombre": "Better on Bedrock v1.1.3"
+  5. Cambia el nombre
+
+Cambiar los colores:
+  1. Abre style.css
+  2. Busca los colores (hexadecimal como #4ade80)
+  3. Reemplaza con nuevos colores
+
+
+HACER BACKUP DE LOS DATOS
+════════════════════════════════════════════════════════════════════════════
+
+Es importante guardar los votos periódicamente:
+
+1. Ubica el archivo: basedatos_votos.json
+2. Cópialo a otra carpeta (por ejemplo: Documentos)
+3. Renómbralo con la fecha: basedatos_votos_02-12-2025.json
+4. Repite cada cierto tiempo
+
+
+PRÓXIMOS PASOS
+════════════════════════════════════════════════════════════════════════════
+
+Después de tener funcionando:
+
+1. PROBAR EN MÚLTIPLES NAVEGADORES
+   - Chrome, Firefox, Safari, Edge
+   - Verifica que aparezca el navegador correcto en los datos
+
+2. PROBAR EN MÓVIL
+   - Accede desde tu teléfono a: http://<tu-ip>:3000
+   - Sustituye <tu-ip> por la IP de tu computadora
+
+3. ANALIZAR DATOS
+   - Usa el panel admin para ver estadísticas
+   - Exporta datos a Excel si necesitas análisis
+
+4. HACER BACKUP REGULAR
+   - Copia basedatos_votos.json periódicamente
+
+5. PUBLICAR EN PRODUCCIÓN (Futuro)
+   - Usar un servidor en la nube
+   - Implementar seguridad adicional
+   - Usar base de datos más robusta (MongoDB, MySQL)
+
+
+CONTACTO Y SOPORTE
+════════════════════════════════════════════════════════════════════════════
+
+Creado por: MiKelSX
+Para: Universidad Finis Terrae
+Addon: Better on Bedrock v1.1.3
+
+Documentación completa:
+  - README.md (Técnica)
+  - CONFIGURACION_RAPIDA.txt (Rápida)
+  - RESUMEN_IMPLEMENTACION.txt (Detallada)
+
+
+¡ÉXITO CON TU SISTEMA DE VOTACIÓN!
+════════════════════════════════════════════════════════════════════════════
+
+Si todo funcionó correctamente, deberías ver:
+  ✓ Página de bienvenida
+  ✓ Anuncio después de 10 segundos
+  ✓ Sistema de votación funcionando
+  ✓ Datos guardados en basedatos_votos.json
+  ✓ Panel admin con estadísticas
+
+¡Ahora puedes comenzar a recopilar votaciones de tu comunidad!

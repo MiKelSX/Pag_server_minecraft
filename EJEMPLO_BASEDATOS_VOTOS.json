@@ -1,0 +1,71 @@
+{
+  "addonNombre": "Better on Bedrock v1.1.3",
+  "totalVotos": 5,
+  "votos": {
+    "si": 3,
+    "no": 1,
+    "quiza": 1
+  },
+  "detallesVotos": [
+    {
+      "id": 1,
+      "voto": "si",
+      "fecha": "2/12/2025 14:30:45",
+      "timestamp": 1733145045000,
+      "navegador": "Google Chrome",
+      "sistemaOperativo": "Windows",
+      "ip": "192.168.1.100",
+      "pais": "Chile",
+      "ciudad": "Santiago",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+    },
+    {
+      "id": 2,
+      "voto": "si",
+      "fecha": "2/12/2025 14:32:15",
+      "timestamp": 1733145135000,
+      "navegador": "Firefox",
+      "sistemaOperativo": "Windows",
+      "ip": "192.168.1.101",
+      "pais": "Chile",
+      "ciudad": "Valparaiso",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0)"
+    },
+    {
+      "id": 3,
+      "voto": "no",
+      "fecha": "2/12/2025 14:35:22",
+      "timestamp": 1733145322000,
+      "navegador": "Safari",
+      "sistemaOperativo": "iOS",
+      "ip": "203.45.67.89",
+      "pais": "Argentina",
+      "ciudad": "Buenos Aires",
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_1 like Mac OS X)"
+    },
+    {
+      "id": 4,
+      "voto": "si",
+      "fecha": "2/12/2025 14:38:50",
+      "timestamp": 1733145530000,
+      "navegador": "Google Chrome",
+      "sistemaOperativo": "Android",
+      "ip": "187.92.45.12",
+      "pais": "Perú",
+      "ciudad": "Lima",
+      "userAgent": "Mozilla/5.0 (Linux; Android 13; SM-A135F)"
+    },
+    {
+      "id": 5,
+      "voto": "quiza",
+      "fecha": "2/12/2025 14:41:33",
+      "timestamp": 1733145693000,
+      "navegador": "Microsoft Edge",
+      "sistemaOperativo": "Windows",
+      "ip": "181.56.34.78",
+      "pais": "Colombia",
+      "ciudad": "Bogota",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+    }
+  ]
+}

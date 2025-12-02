@@ -6,7 +6,7 @@
 const obtenerURLAPI = () => {
     // Si estamos en GitHub Pages, usar la URL de Railway configurada
     if (window.location.hostname === 'mikelsx.github.io') {
-        return 'https://railway.com/project/f47092d2-65f0-4b17-bcf9-b80c5fd7488d?';
+        return 'precious-illumination-production-64d0.up.railway.app';
     }
     // Si estamos en localhost (desarrollo local), usar localhost
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {

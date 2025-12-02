@@ -18,7 +18,7 @@ const obtenerURLAPI = () => {
 
 const API_URL = obtenerURLAPI();
 
-console.log('🔗 URL de API detectada:', API_URL);
+console.log('URL de API detectada:', API_URL);
 
 window.addEventListener('DOMContentLoaded', () => {
     inicializarSistemaAnuncios();
@@ -34,18 +34,30 @@ let yaVoto = false;
 function inicializarSistemaAnuncios() {
     const overlay = document.getElementById('announcementOverlay');
     const contador = document.getElementById('announcementCounter');
-    let tiempoRestante = 10;
     
-    // Iniciar contador de 10 segundos
-    const intervaloContador = setInterval(() => {
-        tiempoRestante--;
-        contador.textContent = tiempoRestante;
+    // El overlay comienza OCULTO
+    overlay.style.display = 'none';
+    
+    // Esperar 10 segundos ANTES de mostrar el anuncio
+    setTimeout(() => {
+        overlay.style.display = 'flex';
+        let tiempoRestante = 10;
         
-        if (tiempoRestante <= 0) {
-            clearInterval(intervaloContador);
-            contador.classList.add('hidden');
-        }
-    }, 1000);
+        // Mostrar contador regresivo
+        contador.textContent = tiempoRestante;
+        contador.style.display = 'block';
+        
+        // Iniciar contador de 10 segundos
+        const intervaloContador = setInterval(() => {
+            tiempoRestante--;
+            contador.textContent = tiempoRestante;
+            
+            if (tiempoRestante <= 0) {
+                clearInterval(intervaloContador);
+                contador.classList.add('hidden');
+            }
+        }, 1000);
+    }, 10000);
     
     // Cargar y mostrar resultados de votación
     cargarResultadosVotacion();
@@ -59,6 +71,11 @@ function cerrarAnuncio() {
     }, 300);
 }
 
+// Alias para que funcione con el HTML
+function closeAnnouncement() {
+    cerrarAnuncio();
+}
+
 async function registrarVoto(voto) {
     if (yaVoto) {
         mostrarNotificacion('Ya has votado anteriormente', 'advertencia');
@@ -66,7 +83,7 @@ async function registrarVoto(voto) {
     }
     
     try {
-        const respuesta = await fetch('/api/registrar-voto', {
+        const respuesta = await fetch(`${API_URL}/api/registrar-voto`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -97,7 +114,7 @@ async function registrarVoto(voto) {
 
 async function cargarResultadosVotacion() {
     try {
-        const respuesta = await fetch('/api/estadisticas-votos');
+        const respuesta = await fetch(`${API_URL}/api/estadisticas-votos`);
         const datos = await respuesta.json();
         
         actualizarResultadosUI(datos.votos);

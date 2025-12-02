@@ -1,0 +1,163 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                    📊 CÓMO ACCEDER AL PANEL DE ADMIN                         ║
+║                                                                               ║
+║                 Tu servidor Railway sirve TODOS los archivos                  ║
+║                                                                               ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+
+════════════════════════════════════════════════════════════════════════════════
+🌐 URLS DISPONIBLES
+════════════════════════════════════════════════════════════════════════════════
+
+PÁGINA PRINCIPAL (index.html):
+https://pagina-minecraft-uft.up.railway.app/
+
+PANEL DE ADMIN (admin.html):
+https://pagina-minecraft-uft.up.railway.app/admin.html
+
+ARCHIVOS ESTÁTICOS:
+https://pagina-minecraft-uft.up.railway.app/style.css
+https://pagina-minecraft-uft.up.railway.app/script.js
+https://pagina-minecraft-uft.up.railway.app/images/
+
+
+════════════════════════════════════════════════════════════════════════════════
+📊 ACCEDER AL ADMIN PANEL
+════════════════════════════════════════════════════════════════════════════════
+
+OPCIÓN 1: Copiar la URL directamente
+────────────────────────────────────
+
+1. Abre tu navegador
+
+2. Copia y pega esta URL:
+   https://pagina-minecraft-uft.up.railway.app/admin.html
+
+3. Presiona Enter
+
+4. ¡Verás el panel de admin!
+
+
+OPCIÓN 2: Desde la página principal
+───────────────────────────────────
+
+1. Ve a: https://pagina-minecraft-uft.up.railway.app/
+
+2. En la barra de direcciones, cambia:
+   https://pagina-minecraft-uft.up.railway.app/
+   
+   Por:
+   https://pagina-minecraft-uft.up.railway.app/admin.html
+
+3. Presiona Enter
+
+
+════════════════════════════════════════════════════════════════════════════════
+📋 QUÉ VAS A VER EN ADMIN.HTML
+════════════════════════════════════════════════════════════════════════════════
+
+El panel de admin muestra:
+
+✓ Total de votos
+✓ Barras de progreso (Sí, No, Quizás)
+✓ Porcentajes
+✓ Tabla de detalles:
+  • ID del voto
+  • Sí/No/Quizás
+  • Fecha y hora
+  • Navegador
+  • Sistema operativo
+  • País
+  • Ciudad
+  • IP
+✓ Estadísticas por país
+✓ Se actualiza cada 30 segundos automáticamente
+
+
+════════════════════════════════════════════════════════════════════════════════
+🔄 FLUJO COMPLETO
+════════════════════════════════════════════════════════════════════════════════
+
+USUARIO NORMAL:
+1. Va a: https://pagina-minecraft-uft.up.railway.app/
+2. Ve la página principal
+3. Anuncio aparece después de 10 segundos
+4. Usuario vota
+
+ADMINISTRADOR:
+1. Va a: https://pagina-minecraft-uft.up.railway.app/admin.html
+2. Ve el panel de estadísticas
+3. Panel se actualiza cada 30 segundos
+4. Ve todos los detalles de los votos
+
+
+════════════════════════════════════════════════════════════════════════════════
+🛠️ CÓMO FUNCIONA
+════════════════════════════════════════════════════════════════════════════════
+
+Tu servidor Railway:
+
+const app = express();
+app.use(express.static(__dirname));
+
+Esto significa que sirve TODOS los archivos de la carpeta:
+
+├─ index.html          ← Raíz /
+├─ admin.html          ← /admin.html
+├─ style.css           ← /style.css
+├─ script.js           ← /script.js
+└─ images/             ← /images/
+
+Por eso puedes acceder directamente a admin.html
+
+
+════════════════════════════════════════════════════════════════════════════════
+📱 VERSIONES
+════════════════════════════════════════════════════════════════════════════════
+
+GITHUB PAGES (Frontend):
+Página principal:
+https://mikelsx.github.io/Pag_server_minecraft/
+
+Admin panel:
+https://mikelsx.github.io/Pag_server_minecraft/admin.html
+
+RAILWAY (Backend):
+Página principal:
+https://pagina-minecraft-uft.up.railway.app/
+
+Admin panel:
+https://pagina-minecraft-uft.up.railway.app/admin.html
+
+(Ambos están sincronizados porque GitHub Pages y Railway sirven los mismos archivos)
+
+
+════════════════════════════════════════════════════════════════════════════════
+✨ ACCESO RÁPIDO
+════════════════════════════════════════════════════════════════════════════════
+
+Guarda estas URLs en tus marcadores:
+
+📍 Página de votación (usuario):
+   https://pagina-minecraft-uft.up.railway.app/
+
+📊 Panel de admin (tú):
+   https://pagina-minecraft-uft.up.railway.app/admin.html
+
+
+════════════════════════════════════════════════════════════════════════════════
+🎯 RESUMEN
+════════════════════════════════════════════════════════════════════════════════
+
+PREGUNTA: ¿Cómo accedo a admin.html?
+RESPUESTA: https://pagina-minecraft-uft.up.railway.app/admin.html
+
+PREGUNTA: ¿Por qué solo me sale index.html?
+RESPUESTA: Necesitas añadir /admin.html a la URL
+
+PREGUNTA: ¿Funciona igual que en GitHub Pages?
+RESPUESTA: Sí, exactamente igual. Railway sirve todos los archivos estáticos
+
+
+════════════════════════════════════════════════════════════════════════════════

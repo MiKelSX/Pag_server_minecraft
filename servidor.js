@@ -85,6 +85,25 @@ function guardarVotos(datos) {
     fs.writeFileSync(ARCHIVO_VOTOS, JSON.stringify(datos, null, 2), 'utf-8');
 }
 
+// RUTA: Verificar si una IP ya votó
+app.get('/api/verificar-voto', async (req, res) => {
+    try {
+        const infoCliente = await obtenerInformacionCliente(req);
+        const datosVotos = cargarVotos();
+        
+        // Verificar si esta IP ya votó
+        const yaVoto = datosVotos.detallesVotos.some(v => v.ip === infoCliente.ip);
+        
+        res.json({
+            yaVoto: yaVoto,
+            ip: infoCliente.ip
+        });
+    } catch (error) {
+        console.error('Error al verificar voto:', error);
+        res.status(500).json({ error: 'Error al verificar voto' });
+    }
+});
+
 // RUTA: Registrar un voto
 app.post('/api/registrar-voto', async (req, res) => {
     try {
@@ -99,6 +118,15 @@ app.post('/api/registrar-voto', async (req, res) => {
         
         // Cargar votos actuales
         const datosVotos = cargarVotos();
+        
+        // Verificar si esta IP ya votó
+        const yaVoto = datosVotos.detallesVotos.some(v => v.ip === infoCliente.ip);
+        if (yaVoto) {
+            return res.status(403).json({ 
+                error: 'Ya has votado desde esta IP', 
+                exito: false 
+            });
+        }
         
         // Incrementar contador
         datosVotos.votos[voto]++;

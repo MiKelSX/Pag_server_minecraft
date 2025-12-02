@@ -91,11 +91,19 @@ async function registrarVoto(voto) {
             body: JSON.stringify({ voto })
         });
         
-        if (!respuesta.ok) {
-            throw new Error('Error al registrar voto');
-        }
-        
         const datos = await respuesta.json();
+        
+        if (!respuesta.ok) {
+            // Manejo de errores específicos del servidor
+            if (respuesta.status === 403) {
+                yaVoto = true;
+                localStorage.setItem('yaVotoAddonBedrock', 'true');
+                deshabilitarBotonesVoto();
+                mostrarNotificacion('Ya has votado desde tu IP. No puedes votar de nuevo.', 'advertencia');
+                return;
+            }
+            throw new Error(datos.error || 'Error al registrar voto');
+        }
         
         if (datos.exito) {
             yaVoto = true;
@@ -119,13 +127,28 @@ async function cargarResultadosVotacion() {
         
         actualizarResultadosUI(datos.votos);
         
-        // Verificar si el usuario ya votó
+        // Verificar si el usuario ya votó (verificación en servidor por IP)
+        const respuestaVerificacion = await fetch(`${API_URL}/api/verificar-voto`);
+        const datosVerificacion = await respuestaVerificacion.json();
+        
+        if (datosVerificacion.yaVoto) {
+            yaVoto = true;
+            // Guardar en localStorage como respaldo
+            localStorage.setItem('yaVotoAddonBedrock', 'true');
+            deshabilitarBotonesVoto();
+        } else {
+            // Limpiar localStorage si el servidor dice que no votó
+            localStorage.removeItem('yaVotoAddonBedrock');
+            yaVoto = false;
+        }
+    } catch (error) {
+        console.error('Error al cargar resultados:', error);
+        
+        // Si hay error de conexión, usar localStorage como fallback
         if (localStorage.getItem('yaVotoAddonBedrock')) {
             yaVoto = true;
             deshabilitarBotonesVoto();
         }
-    } catch (error) {
-        console.error('Error al cargar resultados:', error);
     }
 }
 

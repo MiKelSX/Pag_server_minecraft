@@ -2,6 +2,24 @@
 // INICIALIZACIÓN DEL SISTEMA
 // ============================================
 
+// Detectar URL de API automáticamente
+const obtenerURLAPI = () => {
+    // Si estamos en GitHub Pages, usar la URL de Railway configurada
+    if (window.location.hostname === 'mikelsx.github.io') {
+        return 'https://railway.com/project/f47092d2-65f0-4b17-bcf9-b80c5fd7488d?';
+    }
+    // Si estamos en localhost (desarrollo local), usar localhost
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return 'http://localhost:3000';
+    }
+    // Fallback a la URL base (en caso de que esté hosteado en otro lado)
+    return window.location.origin;
+};
+
+const API_URL = obtenerURLAPI();
+
+console.log('🔗 URL de API detectada:', API_URL);
+
 window.addEventListener('DOMContentLoaded', () => {
     inicializarSistemaAnuncios();
     configurarSuavizado();
@@ -48,7 +66,7 @@ async function registrarVoto(voto) {
     }
     
     try {
-        const respuesta = await fetch('/api/registrar-voto', {
+        const respuesta = await fetch(`${API_URL}/api/registrar-voto`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -79,7 +97,7 @@ async function registrarVoto(voto) {
 
 async function cargarResultadosVotacion() {
     try {
-        const respuesta = await fetch('/api/estadisticas-votos');
+        const respuesta = await fetch(`${API_URL}/api/estadisticas-votos`);
         const datos = await respuesta.json();
         
         actualizarResultadosUI(datos.votos);

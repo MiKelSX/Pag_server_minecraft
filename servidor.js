@@ -6,6 +6,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
+const cors = require('cors');
 const app = express();
 
 // Middleware
@@ -246,14 +247,27 @@ app.get('/api/estadisticas-navegador', (req, res) => {
     }
 });
 
-// Puerto
-const PUERTO = process.env.PUERTO || 3000;
+// Puerto (Railway asigna automáticamente PORT)
+const PUERTO = process.env.PORT || process.env.PUERTO || 3000;
+
+// Permitir CORS para GitHub Pages
+const cors = require('cors');
+app.use(cors({
+    origin: ['https://mikelsx.github.io', 'http://localhost:3000', 'http://localhost:5173'],
+    methods: ['GET', 'POST', 'OPTIONS'],
+    credentials: true
+}));
 
 app.listen(PUERTO, () => {
+    const ambiente = process.env.NODE_ENV || 'desarrollo';
+    const urlPublica = process.env.RAILWAY_PUBLIC_DOMAIN ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}` : `http://localhost:${PUERTO}`;
+    
     console.log(`========================================`);
     console.log(`Servidor de Votos - UFT Minecraft`);
     console.log(`========================================`);
+    console.log(`✓ Ambiente: ${ambiente}`);
     console.log(`✓ Servidor ejecutándose en puerto: ${PUERTO}`);
+    console.log(`✓ URL pública: ${urlPublica}`);
     console.log(`✓ URL local: http://localhost:${PUERTO}`);
     console.log(`✓ Base de datos: ${ARCHIVO_VOTOS}`);
     console.log(`========================================`);

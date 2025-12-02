@@ -53,7 +53,7 @@ OPCIÓN B - USAR TERMINAL:
   3. Instala dependencias:
      npm install
   4. Inicia el servidor:
-     npm start
+     npm run iniciar
 
 
 PASO 4: ACCEDER A LA PÁGINA

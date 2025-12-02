@@ -1,25 +1,26 @@
 {
-  "nombre": "servidor-votos-minecraft-uft",
+  "name": "servidor-votos-minecraft-uft",
   "version": "1.0.0",
-  "descripcion": "Servidor de votación para addons del servidor Minecraft UFT",
-  "principal": "servidor.js",
+  "description": "Servidor de votación para addons del servidor Minecraft UFT",
+  "main": "servidor.js",
   "scripts": {
+    "start": "node servidor.js",
     "iniciar": "node servidor.js",
     "desarrollo": "nodemon servidor.js"
   },
-  "palabras_clave": [
+  "keywords": [
     "minecraft",
     "votos",
     "servidor",
     "uft"
   ],
-  "autor": "MiKelSX",
-  "licencia": "MIT",
-  "dependencias": {
+  "author": "MiKelSX",
+  "license": "MIT",
+  "dependencies": {
     "express": "^4.18.2",
     "axios": "^1.6.0"
   },
-  "dependenciasDesarrollo": {
+  "devDependencies": {
     "nodemon": "^3.0.1"
   }
 }

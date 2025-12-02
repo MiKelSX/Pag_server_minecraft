@@ -6,7 +6,7 @@
 const obtenerURLAPI = () => {
     // Si estamos en GitHub Pages, usar la URL de Railway configurada
     if (window.location.hostname === 'mikelsx.github.io') {
-        return 'precious-illumination-production-64d0.up.railway.app';
+        return 'pagina-minecraft-uft.up.railway.app';
     }
     // Si estamos en localhost (desarrollo local), usar localhost
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
@@ -66,7 +66,7 @@ async function registrarVoto(voto) {
     }
     
     try {
-        const respuesta = await fetch(`${API_URL}/api/registrar-voto`, {
+        const respuesta = await fetch('/api/registrar-voto', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -97,7 +97,7 @@ async function registrarVoto(voto) {
 
 async function cargarResultadosVotacion() {
     try {
-        const respuesta = await fetch(`${API_URL}/api/estadisticas-votos`);
+        const respuesta = await fetch('/api/estadisticas-votos');
         const datos = await respuesta.json();
         
         actualizarResultadosUI(datos.votos);
